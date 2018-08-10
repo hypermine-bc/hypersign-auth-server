@@ -45,7 +45,7 @@ Auth server for hyperSign.
 ## Author
 
 **HyperSign-Auth** © [Vishwas1](https://github.com/Vishwas1), Released under the [MIT](./LICENSE) License.<br>
-Authored and maintained by vikramIde with help from contributors ([list](Vishwas1/voting-daap-2017/graphs/contributors)).
+Authored and maintained by Hypermine Technologies with the help from contributors .
 
 The Team 
 

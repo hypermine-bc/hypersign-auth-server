@@ -26,11 +26,6 @@ Auth server for hyperSign.
 ```
 
 
-
-## Contract
-  ```
-    https://github.com/Vishwas1/voting-daap-2017/blob/master/app/contract/Ballot.sol
-  ```
 ## Contributing
 
 1. Fork it!

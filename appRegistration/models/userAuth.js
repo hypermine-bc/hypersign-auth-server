@@ -1,5 +1,5 @@
 const User = require('../schema/user')
-
+const responseHandeller = require('../common/responseHandeller.js')
 const userAuth = (data) => {
             return new User({
                 userName: data.attributes.userName,
@@ -10,7 +10,7 @@ const userAuth = (data) => {
                 })
                 .save()
                 .then((newUser) => {
-                    return { response: 'Successfully Registered' }
+                    return {"data":newUser,"message":"Sucessfully Registered"}
                 })     
 }
 

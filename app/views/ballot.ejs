@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <title>
-            E-Voting | Create Ballot
+            HyperSign | Create Company
         </title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -80,27 +80,22 @@
                                 <div class="col-lg-12">
                                     <div class="ibox float-e-margins">
                                         <div class="ibox-title">
-                                            <h5>See poll details</h5>
+                                            <h5>Register Company</h5>
                                         </div>
                                         <div class="ibox-content">
                                             <form class="form-horizontal" method="POST" name="BallotForm">
                                                 
-                                                
                                                <div class="form-group">
                                             <label class="col-sm-3 ">
-                                            <input autocomplete="off" class="form-control ballot-name" name="ballot_name" placeholder="Election Name" type="text">
+                                            <input autocomplete="off" class="form-control ballot-name" name="ballot_name" placeholder="Company Name" type="text">
                                             </input>
                                             </label>
                                             <label class="col-sm-3 ">
-                                            <input autocomplete="off" class="form-control date start-date" name="start_date" placeholder="Start Date" type="text">
-                                            </input>
-                                            </label>
-                                            <label class="col-sm-3 ">
-                                            <input type="text" name="" placeholder="Nominee Name" id="" class="tagsinput-typeahead form-control nominee">
+                                            <input type="text" name="" placeholder="Public Key" id="" class="tagsinput-typeahead form-control nominee">
                                             </label>
                                             <div class="col-sm-3">
                                                 <button class="btn btn-primary createBallot" type="button">
-                                                Create Ballot
+                                                Create Company
                                                 </button>
                                             </div>
                                         </div>
@@ -304,21 +299,26 @@
 
             $(document).on('click', '.createBallot', function (e) {
                 e.preventDefault();
-                var data = {
-                    contractName: $('.ballot-name').val(),
-                    startTime: $('.start-date').val(),
-                    partyArr: $('.nominee').val(),
-                    adharnumber : sessionStorage.getItem('adminAdhar')
+                var data={}
+                var res={}
+
+                data['attributes'] = {
+                    companyId: 22,
+                    companyName: $('.ballot-name').val(),
+                    publicToken: $('.nominee').val()
                 }
-                console.log(data)
+                res['data']= data
+                console.log(res)
+                debugger
                 $.ajax({
                     method: "POST",
-                    url: "/api/create-ballot",
-                    data: data,
+                    url: "/company",
+                    data: res,
                     success: function (data) {
+                        debugger
                         if(data.status == 'Success'){
+                            alert("Company Registered")
 
-                            getContractList(sessionStorage.getItem('adminAdhar'));
                             $('.ballot-name').val('')
                             $('.start-date').val('')
                             $('input').tagsinput('removeAll');

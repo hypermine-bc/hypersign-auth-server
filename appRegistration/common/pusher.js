@@ -8,4 +8,12 @@ var pusher = new Pusher({
   encrypted: true
 });
 
-module.exports.pusher = pusher
+
+module.exports.callPusher = {
+
+	notify(data,channel,event)
+	{
+		console.log(pusher)
+		 return pusher.trigger(channel, event, data)
+	}
+}

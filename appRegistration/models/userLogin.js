@@ -1,16 +1,22 @@
 const User = require('../schema/user')
-const pusher = require('../common/pusher.js')
-const responseHandeller = require('../common/responseHandeller.js')
+var Pusher = require('pusher');
+
+var pusher = new Pusher({
+  appId: '570580',
+  key: '46d2cb8ef7cf9dc2666d',
+  secret: 'bd781cd91643f7caae29',
+  cluster: 'ap2',
+  encrypted: true
+});
+
 const userAuth = (data) => {
     return User.findOne({publicToken: data.attributes.publicToken, companyId: data.attributes.companyId})
         .then((currentUser) => {
             if (currentUser) {
-
-            	//trigger it when the signedTraction is validated 
             	pusher.trigger('hypermine-hypersign', 'auth-service', currentUser)
-                return { response: 'Valid User' }
+                return {"data":currentUser,"message":"Valid User"}
             } else {
-                return { response: 'InValid User' }
+                return {"data":{},"message":"Invalid User"}
             }
         })
 }

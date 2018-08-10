@@ -81,11 +81,29 @@ var hypersign_wallet = {
     },
     verifyMessageTx(rawMessage, signedMsgRSV, publicKey){
         return new Promise((resolve, reject) => {
-            debugger
-            let newpublicKeyUint8Arr = lightwallet.signing.recoverAddress(rawMessage, signedMsgRSV.v, signedMsgRSV.r, signedMsgRSV.s)
+            console.log('hypersing-wallet : verifyMessageTx : Promise called.')    
+            console.log('hypersing-wallet : verifyMessageTx : Before recover call.')   
+            console.log('hypersing-wallet : verifyMessageTx : Before recover call. rawMessage : ' + rawMessage)    
+            console.log('hypersing-wallet : verifyMessageTx : Before recover call. signedMsgRSV.v : ' + signedMsgRSV.v)    
+            console.log('hypersing-wallet : verifyMessageTx : Before recover call. signedMsgRSV.r : ' + signedMsgRSV.r)    
+            console.log('hypersing-wallet : verifyMessageTx : Before recover call. signedMsgRSV.s : ' + signedMsgRSV.s)    
+            let newpublicKeyUint8Arr = lightwallet.signing.recoverAddress(rawMessage, signedMsgRSV.v, signedMsgRSV.r.data, signedMsgRSV.s.data)
+            console.log('hypersing-wallet : verifyMessageTx : After recover call. newpublicKeyUint8Arr ' + newpublicKeyUint8Arr)  
+            
+            console.log('hypersing-wallet : verifyMessageTx : Before toHexString call.') 
             let newpublicKey = this.toHexString(newpublicKeyUint8Arr)
-            if(publicKey === '0x' + newpublicKey)  resolve(true)
-            else reject(false)
+            console.log('hypersing-wallet : verifyMessageTx : After toHexString call.')  
+
+
+            console.log('hypersing-wallet : verifyMessageTx : newpublicKey : ' + newpublicKey)    
+            if(publicKey === '0x' + newpublicKey) {
+                console.log('hypersing-wallet : verifyMessageTx : Inside if')    
+                resolve(true)
+            } 
+            else {
+                console.log('hypersing-wallet : verifyMessageTx : Inside else')    
+                reject(false)
+            }
         })
     },
     toHexString(byteArray) {
@@ -96,4 +114,4 @@ var hypersign_wallet = {
 }
 
 
-export default hypersign_wallet 
+module.exports = hypersign_wallet 

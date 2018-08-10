@@ -1,4 +1,4 @@
-import hsWallet from '../common/hypersign-wallet'
+const hsWallet = require('../common/hypersign-wallet')
 const User = require('../schema/user')
 var Pusher = require('pusher');
 
@@ -15,9 +15,12 @@ const userAuth = (data) => {
     return User.findOne({publicToken: data.attributes.publicToken, companyId: data.attributes.companyId})
         .then((currentUser) => {
             if (currentUser) {
-                let signedMsgRSV =  data.attributes.signedRsv
+                let signedMsgRSV = data.attributes.signedRsv
+                console.log('userLogin : userAuth : Parameters : signedMsgRSV = '+ signedMsgRSV)
                 let from = data.attributes.publicToken
+                console.log('userLogin : userAuth : Parameters : from = '+ from)
                 let rawMsg = data.attributes.rawMsg
+                console.log('userLogin : userAuth : Parameters : rawMsg = '+ rawMsg)    
                 //verify signedMsg and get the public key
                 // check if newPublicKey is equal to oldPublicKey
                 let verifyPromise = hsWallet.verifyMessageTx(rawMsg, signedMsgRSV, from)
@@ -38,6 +41,7 @@ const userAuth = (data) => {
                     console.log('userLogin : userAuth : Error in verifyPromise. Message = '+ err)
                 })
             } else {
+                console.log('userLogin : userAuth : Inside else')
                 return {"data":{},"message":"Invalid User"}
             }
         })

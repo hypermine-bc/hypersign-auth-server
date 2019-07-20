@@ -11,6 +11,7 @@ var express = require('express'),
 //  web3Conn = require('./conns/web3conn');
  const userRegister = require('./appRegistration/routes/registerRoutes');
  const notifyTx = require('./appRegistration/routes/notifyTxRoutes');
+ const challenge = require('./appRegistration/routes/challengeRoutes');
  const userLogin = require('./appRegistration/routes/loginRoutes');
  const company = require('./appRegistration/routes/companyRoutes');
  
@@ -74,6 +75,7 @@ app.get('/ballot',function(req,res){res.render('ballot',{title:'E-Voting | Creat
 app.use('/api', require('./app/api'));
 app.use('/appRegister', userRegister);
 app.use('/notifyTx', notifyTx);
+app.use('/challenge', challenge);
 app.use('/appLogin', userLogin);
 app.use('/company', company);
 

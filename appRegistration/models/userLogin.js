@@ -28,12 +28,12 @@ const userAuth = (data) => {
                     if(res){
                         console.log('userLogin : userAuth : Promise resolved. Successfully verfied.')    
                         pusher.trigger('hypermine-hypersign', 'auth-service', {currentUser,signedMsgRSV})
-                        return {"data":currentUser,"message":"Valid User"}
+                        return {"data":currentUser,"message":"Valid User","valid":true}
                     }
                     else{
                         console.log('userLogin : userAuth : Promise resolved. Unverifed.')        
                         pusher.trigger('hypermine-hypersign', 'auth-service', signedMsgRSV)
-                        return {"data":{},"message":"Invalid User"}
+                        return { "data": {}, "message": "Invalid User", "valid": false}
                     } 
                   } , (err) => {
                     console.log('userLogin : userAuth : Error Promise not resolved. Message = '+ err)

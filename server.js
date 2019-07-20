@@ -79,7 +79,7 @@ app.use('/challenge', challenge);
 app.use('/appLogin', userLogin);
 app.use('/company', company);
 
-
+//Added Travis CI
 //MongoDb connection for testing purpose
 //connect to mongoDB and start server
 mongoose.connect('mongodb://store:store123@ds163630.mlab.com:63630/daily-store-rating-system', () => {

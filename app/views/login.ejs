@@ -8,7 +8,17 @@
         <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
         <link href="css/animate.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
+        <script src="http://localhost:8080/auth/js/keycloak.js"></script>
+        <script>
+            var keycloak = Keycloak();
+            keycloak.init({ onLoad: 'login-required' }).success(function(authenticated) {
+                alert(authenticated ? 'authenticated' : 'not authenticated');
+            }).error(function() {
+                alert('failed to initialize');
+            });
+        </script>
     </head>
+
     <body class="gray-bg">
         <div class="middle-box text-center loginscreen animated fadeInDown">
             <div>

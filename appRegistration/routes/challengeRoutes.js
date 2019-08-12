@@ -4,6 +4,7 @@ const serialize = require('../common/serialize')
 
 // user registration end point
 router.post('/', (req, res) => {
+  console.log(req)
   if (req.body.data) {
     try{
         challenge.getChallenge(req.body.data)

@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "aadhaar-validator": "^1.0.5",
+    "keycloak-connect": "keycloak/keycloak-nodejs-connect",
+    "express-session": "^1.14.2",
     "asyncawait": "^1.0.7",
     "body-parser": "^1.18.3",
     "ejs": "^2.5.7",

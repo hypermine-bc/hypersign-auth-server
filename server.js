@@ -7,7 +7,9 @@ var express = require('express'),
  morgan = require('morgan'),
  mongoose =require('mongoose'),
  mongoClient = require('mongodb').MongoClient,
- jwt = require('jsonwebtoken');
+ jwt = require('jsonwebtoken'),
+ session = require('express-session');
+ // Keycloak = require('keycloak-connect');
 //  web3Conn = require('./conns/web3conn');
  const userRegister = require('./appRegistration/routes/registerRoutes');
  const notifyTx = require('./appRegistration/routes/notifyTxRoutes');
@@ -51,6 +53,15 @@ app.use(morgan('dev'));
 // going to be used by express first
 app.use(express.static('public')); 
 
+var memoryStore = new session.MemoryStore();
+
+app.use(session({
+  secret: '12345678',
+  resave: false,
+  saveUninitialized: true,
+  store: memoryStore
+}));
+
 //View Engine
 app.set('views','./app/views');
 app.set('view engine','ejs');
@@ -67,6 +78,14 @@ var allowCrossDomain = function(req, res, next) {
 
 app.use(allowCrossDomain);
 
+// var keycloak = new Keycloak({
+//   store: memoryStore
+// });
+
+// app.use(keycloak.middleware({
+//   logout: '/logout',
+//   admin: '/'
+// }));
 //Routes configuration ...
 app.get('/',function(req,res){res.render('login',{title:'E-Voting | Login'});});
 app.get('/login',function(req,res){res.render('login',{title:'E-Voting | Login'});});

@@ -1,46 +1,13 @@
 # HyperSign-Auth-Server 
 
-> A Hypermine Technologies project
-## Table of Contents
+## Install and run
 
-<!-- toc -->
-
-- [Overview](#user-content-overview)
-
-
-<!-- tocstop -->
-
-## Overview
-
-Auth server for hyperSign.
- 
-
-## API
- ```
-/**
- *  ------------Sample APIS-------------------
- * http://localhost:3000/appRegister/
- * http://localhost:3000/appLogin/
- * http://localhost:3000/company/
- */
 ```
-
-
-## Contributing
-
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
-
-## Mobile App
- 
- ```
-  https://github.com/hypermine-bc/hypersign-mobile
-  
-  ```
-
+git clone 
+cd 
+npm i
+npm run dev | start
+```
 
 ## Author
 

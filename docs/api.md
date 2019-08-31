@@ -4,42 +4,32 @@ Request :
 
 ```json
 {
-	"data": {
-            "attributes": {
-              "userName": "vishwas",
-              "userEmail": "vishu.anand1@gmail.com",
-              "companyId": 21,
-              "publicToken": "asdf",
-              "other": "erfghjkl45678"
-            }
-        	}
+  "companyId": "playground",
+  "publicKey": "GCHFLNLH2KAYWKWX3P6RUV6ZOBIRNH7D3BVQGUYJ5JYGHO2EN736SQCG"
 }
 ```
 Response : 
 
 ```json
 {
-    "links": {},
-    "data": [
-        {
-            "attributes": {
-                "data": {
-                    "_id": "5d6a1975b829860b11d85e43",
-                    "userName": "vishwas",
-                    "userEmail": "vishu.anand1@gmail.com",
-                    "companyId": 21,
-                    "publicToken": "asdf",
-                    "other": "erfghjkl45678",
-                    "createdAt": "2019-08-31T06:53:41.551Z",
-                    "updatedAt": "2019-08-31T06:53:41.551Z"
-                },
-                "message": "Sucessfully Registered"
-            },
-            "relationships": {}
-        }
-    ],
-    "meta": {},
-    "includes": []
+  "links": {},
+  "data": [
+      {
+          "attributes": {
+              "data": {
+                  "_id": "5d6a28490734b332a1c7b5ef",
+                  "companyId": "playground",
+                  "publicKey": "GCHFLNLH2KAYWKWX3P6RUV6ZOBIRNH7D3BVQGUYJ5JYGHO2EN736SQCG",
+                  "createdAt": "2019-08-31T07:56:57.519Z",
+                  "updatedAt": "2019-08-31T07:56:57.519Z"
+              },
+              "message": "Sucessfully Registered"
+          },
+          "relationships": {}
+      }
+  ],
+  "meta": {},
+  "includes": []
 }
 
 ```
@@ -50,16 +40,11 @@ Request:
 
 ```json
 {
-  "data": {
-    "attributes": {
-      "companyId": 21,
-      "signedRsv": "signed rsv",
-      "publicToken": "asdf",
-      "rawMsg": "rawMsg"
-    }
-  }
+  "companyId": "playground",
+  "publicKey": "GCHFLNLH2KAYWKWX3P6RUV6ZOBIRNH7D3BVQGUYJ5JYGHO2EN736SQCG",
+  "signedRsv": "signed rsv",
+  "rawMsg": "rawMsg"
 }
-
 ```
 
 Response:
@@ -69,6 +54,10 @@ Response:
   "links": {},
   "data": [
       {
+          "attributes": {
+              "data": {},
+              "message": "TypeError: Cannot read property 'data' of undefined"
+          },
           "relationships": {}
       }
   ],

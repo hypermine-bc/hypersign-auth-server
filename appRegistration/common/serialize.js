@@ -2,7 +2,7 @@ const success = (data) => {
     return {
         "links": {},
         "data": [
-            {
+            {   
                 "attributes": data,
                 "relationships": {}
             }

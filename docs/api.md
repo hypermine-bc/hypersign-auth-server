@@ -65,3 +65,22 @@ Response:
   "includes": []
 }
 ```
+
+## POST localhost:3000/challange
+
+```js
+{
+  "kcSessionId": "$KCSESSIONID",
+  "companyId": "playground"
+}
+
+```
+
+Response: 
+
+```js
+{
+  
+}
+
+```

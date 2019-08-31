@@ -10,6 +10,7 @@ router.post('/', (req, res) => {
                 res.status(200)
                 res.send(serialize.success(response))
             }).catch((err) => {
+                console.log(`loginRoutes :: / : Error = ${err}`)
                 res.status(400)
                 res.send(serialize.error(err))
             })

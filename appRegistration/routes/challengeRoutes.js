@@ -1,13 +1,11 @@
 const router = require('express').Router()
 const challenge = require('../models/challenge')
 const serialize = require('../common/serialize')
-
 // user registration end point
 router.post('/', (req, res) => {
-  console.log(req)
-  if (req.body.data) {
+  if (req.body) {
     try{
-        challenge.getChallenge(req.body.data)
+        challenge.getChallenge(req.body)
           .then((response) => {
             res.status(200)
             res.send(serialize.success(response))
@@ -15,9 +13,9 @@ router.post('/', (req, res) => {
             res.status(400)
             res.send(serialize.error(err))
           })
-      } catch (err) {
-        console.log('challengeRoutes', err)
-    }
+      }catch (err) {
+        console.log(`challengeRoutes :: / : ${JSON.stringify(err)}`)
+      }
   } else {
     res.status(400)
     res.send(serialize.error())

@@ -3,8 +3,8 @@
 ## Install and run
 
 ```
-git clone 
-cd 
+git clone https://github.com/hypermine-bc/hs-auth-server.git
+cd hs-auth-server
 npm i
 npm run dev | start
 ```

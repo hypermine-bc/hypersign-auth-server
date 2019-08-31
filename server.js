@@ -94,10 +94,11 @@ app.get('/ballot',function(req,res){res.render('ballot',{title:'E-Voting | Creat
 app.use('/api', require('./app/api'));
 
 //For hs-auth-server
-app.use('/appRegister', userRegister);
-app.use('/notifyTx', notifyTx);
+app.use('/register', userRegister);
+app.use('/verify', userLogin);
 app.use('/challenge', challenge);
-app.use('/appLogin', userLogin);
+
+app.use('/notifyTx', notifyTx);
 app.use('/company', company);
 
 //Added Travis CI

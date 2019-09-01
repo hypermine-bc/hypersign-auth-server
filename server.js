@@ -97,9 +97,10 @@ app.use('/api', require('./app/api'));
 app.use('/register', userRegister);
 app.use('/verify', userLogin);
 app.use('/challenge', challenge);
+app.use('/company', company);
 
 app.use('/notifyTx', notifyTx);
-app.use('/company', company);
+
 
 //Added Travis CI
 //MongoDb connection for testing purpose

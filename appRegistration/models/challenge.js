@@ -28,6 +28,8 @@ const getChallenge = async (data) => {
                   console.log(`challange :: getChallenge : Error = ${err}`)
               })
       }
+    }else{
+      return {"data":{},"message":"sessionid or companyid can not be null or empty", "status" : 0}
     }
   }catch(e){
     console.log(e)

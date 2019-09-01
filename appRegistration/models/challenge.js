@@ -23,7 +23,7 @@ const getChallenge = async (data) => {
               })
               .save()
               .then((newSession) => {
-                  return {"data":newSession,"message":"Sucessfully session created", "status" : 1}
+                  return {"data":newSession.challange,"message":"Sucessfully session created", "status" : 1}
               }).catch((err) => {
                   console.log(`challange :: getChallenge : Error = ${err}`)
               })

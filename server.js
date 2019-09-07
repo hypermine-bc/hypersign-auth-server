@@ -92,16 +92,20 @@ app.get('/login',function(req,res){res.render('login',{title:'E-Voting | Login'}
 app.get('/register',function(req,res){res.render('register',{title:'E-Voting | Register'});});
 app.get('/ballot',function(req,res){res.render('ballot',{title:'E-Voting | Create Ballot'});});
 app.use('/api', require('./app/api'));
-app.use('/appRegister', userRegister);
-app.use('/notifyTx', notifyTx);
+
+//For hs-auth-server
+app.use('/register', userRegister);
+app.use('/verify', userLogin);
 app.use('/challenge', challenge);
-app.use('/appLogin', userLogin);
 app.use('/company', company);
+
+app.use('/notifyTx', notifyTx);
+
 
 //Added Travis CI
 //MongoDb connection for testing purpose
 //connect to mongoDB and start server
-mongoose.connect('mongodb://store:store123@ds163630.mlab.com:63630/daily-store-rating-system', () => {
+mongoose.connect('mongodb+srv://admin:admin@cluster0-5rem6.mongodb.net/test?retryWrites=true&w=majority', () => {
     console.log('Connected to MongoDB')
 }).catch(err => console.log('Error while connecting DB', err))
 

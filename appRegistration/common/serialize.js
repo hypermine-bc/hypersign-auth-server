@@ -1,15 +1,5 @@
 const success = (data) => {
-    return {
-        "links": {},
-        "data": [
-            {
-                "attributes": data,
-                "relationships": {}
-            }
-        ],
-        "meta": {},
-        "includes": []
-    }
+    return data
 }
 const error = (code, message) => {
     return {

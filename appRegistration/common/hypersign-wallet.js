@@ -81,6 +81,7 @@ var hypersign_wallet = {
     },
     verifyMessageTx(rawMessage, signedMsgRSV, publicKey){
         return new Promise((resolve, reject) => {
+            signedMsgRSV = JSON.parse(signedMsgRSV);
             console.log('hypersing-wallet : verifyMessageTx : Promise called.')    
             console.log('hypersing-wallet : verifyMessageTx : Before recover call.')   
             console.log('hypersing-wallet : verifyMessageTx : Before recover call. rawMessage : ' + rawMessage)    

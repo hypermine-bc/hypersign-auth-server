@@ -1,24 +1,39 @@
-const User = require('../schema/user')
+const Session = require('../schema/session')
 const responseHandeller = require('../common/responseHandeller.js')
 const Pusher = require('pusher');
+const uuidv1 = require('uuid/v1');
 
-var pusher = new Pusher({
-  appId: '570580',
-  key: '46d2cb8ef7cf9dc2666d',
-  secret: 'bd781cd91643f7caae29',
-  cluster: 'ap2',
-  encrypted: true
-});
-
-const getChallenge = (data) => {
-  return new Promise((resolve, reject) => {
-    /**
-     * Need to add Company Id Check here
-     */
-    data.attributes.challenge = 'QUICKBROWNFOXJUMPOVERALAZYDOG'
-    pusher.trigger('hypermine-hypersign', 'challenge-service', data.attributes)
-    resolve({ "data": data.attributes, "message": "Challenge Generated" })
-  })
+const getChallenge = async (data) => {
+  try{
+    if(data.kcSessionId && data.companyId){
+      const ksSessionId = data.kcSessionId;
+      const companyId = data.companyId; // TODO : Need to add Company Id Check here
+      const challange = uuidv1();
+      // check if session is already there
+      const sessionInDb = await Session.findOne({ksSessionId: ksSessionId, companyId: companyId});
+      if(sessionInDb){
+          return {"data":sessionInDb.ksSessionId,"message":"Session already exists", "status" : 0}
+      }else{
+          return new Session({
+                companyId: companyId,
+                publicKey: "",
+                ksSessionId: ksSessionId,
+                challange: challange,
+                isAuth: false,
+              })
+              .save()
+              .then((newSession) => {
+                  return {"data":newSession.challange,"message":"Sucessfully session created", "status" : 1}
+              }).catch((err) => {
+                  console.log(`challange :: getChallenge : Error = ${err}`)
+              })
+      }
+    }else{
+      return {"data":{},"message":"sessionid or companyid can not be null or empty", "status" : 0}
+    }
+  }catch(e){
+    console.log(e)
+  }
 }
 
 module.exports.getChallenge = getChallenge

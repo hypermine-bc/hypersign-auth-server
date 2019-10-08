@@ -9,6 +9,8 @@ var express = require('express'),
  mongoClient = require('mongodb').MongoClient,
  jwt = require('jsonwebtoken'),
  session = require('express-session');
+
+ var cors = require('cors')
  // Keycloak = require('keycloak-connect');
 //  web3Conn = require('./conns/web3conn');
  const userRegister = require('./appRegistration/routes/registerRoutes');
@@ -43,6 +45,7 @@ console.log('server : After setting secret key');
 //body-parser to get infos from POST URL parameters
 app.use(bodyparser.urlencoded({extended : true}));
 app.use(bodyparser.json());
+app.use(cors())
 
 // app.use(bodyParser.json()) // handle json data
 // app.use(bodyParser.urlencoded({ extended: true })) 
